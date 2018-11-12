@@ -1,3 +1,7 @@
+<?php
+	include('sessions.php');
+	include('connect.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,21 +73,27 @@
 				<h1 class="text-uppercase font-weight-bold text-white">Dashboard</h1>
 				<hr class="white">
 				<ul class="nav nav-pills nav-stacked md-pills" id="main">
-					<li class="list-item"><a href="signup.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-sign-in-alt">&nbsp;</span></i>Applicants</a>
+					<li class="list-item"><a href="ad_dashboard.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-home"></span></i>DASHBOARD</a>
 					</li>
-					<li class="list-item"><a href="agenda.html" class="text-uppercase font-weight-bold"><spam><i class="fas fa-edit"></i>&nbsp;</span>Agenda</a>
+					<li class="list-item"><a href="rsvp.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-sign-in-alt">&nbsp;</span></i>Applicants</a>
 					</li>
-					<li class="list-item"><a href="judges.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-layer-group"></i>&nbsp;</span>Judges</a>
+					<li class="list-item"><a href="agenda.php" class="text-uppercase font-weight-bold"><spam><i class="fas fa-edit"></i>&nbsp;</span>Agenda</a>
 					</li>
-					<li class="list-item"><a href="prizes.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-award"></i>&nbsp;</span>Prizes</a>
+					<li class="list-item"><a href="judges.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-layer-group"></i>&nbsp;</span>Judges</a>
 					</li>
-					<li class="list-item"><a href="rules.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-star"></i>&nbsp;</span> Rules</a>
+					<li class="list-item"><a href="prize.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-award"></i>&nbsp;</span>Prizes</a>
 					</li>
-					<li class="list-item active"><a href="query.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-question-circle"></i>&nbsp;</span>Queries</a>
+					<li class="list-item"><a href="rules.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-star"></i>&nbsp;</span> Rules</a>
 					</li>
-					<li class="list-item"><a href="sponsors.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-user-tie"></i>&nbsp;</span>Sponsors</a>
+					<li class="list-item active"><a href="query.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-question-circle"></i>&nbsp;</span>Queries</a>
 					</li>
-					<li class="list-item"><a href="problem.html" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span> Problem Statement</a>
+					<li class="list-item"><a href="sponsors.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-user-tie"></i>&nbsp;</span>Sponsors</a>
+					</li>
+					<li class="list-item"><a href="problem.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span> Problem Statement</a>
+					</li>
+					<li class="list-item"><a href="mentors.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span>Mentors and Speakers</a>
+					</li>
+					<li class="list-item"><a href="logout.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-sign-out-alt"></i>&nbsp;</span> Logout</a>
 					</li>
 				</ul>
 			</div>
@@ -99,20 +109,50 @@
             <th><b>Answer</th>
             <th><b>Update Answer</th>
             <th><b>Enable FAQ</th>
+						<th><b>Disable FAQ</th>
 						</tr>
 					</thead>
+					<?php
+
+						$query="select * from query";
+						$result=mysqli_query($con,$query);
+					?>
 					<tbody>
+						<?php
+							$count=0;
+							while ($row=mysqli_fetch_array($result)) {
+								$count++;
+						 ?>
+
 						<tr>
-						<td>1</td>
-						<td>Random</td>
-						<td>Random</td>
-						<td>Random</td>
-            <td>Random</td>
-            
-            <td><a href="#"  class= "btn btn-sm text-center btn-success text-upppercase">UPDATE</a></td>
-            <td><a href="#"  class= "btn btn-sm btn-danger text-center text-upppercase">FAQ</a></td>
+							<form action="qupdate1.php" method="post">
+								<input type="hidden" name="PKid" value="<?php echo  $row['id'] ?>">
+								<input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+						<td> <?php echo $count; ?> </td>
+						<td> <?php echo $row['qfrom']; ?> </td>
+						<td> <?php echo $row['sub']; ?> </td>
+						<td> <?php echo $row['qsn']; ?> </td>
+						<?php if ($row['ans']==NULL) { ?>
+							<td> <textarea name="textarea" rows="4" cols="40"></textarea> </td>
+							<td> <button type="submit" name="button" class= "btn btn-sm text-center btn-success text-upppercase">UPDATE</button> </td>
+							<td> <button type="button" name="button" class= "btn btn-sm btn-danger text-center text-upppercase" disabled>faq</button> </td>
+							<td> <button type="button" name="button" class= "btn btn-sm btn-danger text-center text-upppercase" disabled>Disable</button> </td>
+						<?php	} else { ?>
+							<td> <?php echo $row['ans']; ?> </td>
+							<td> <button type="submit" name="button" class= "btn btn-sm text-center btn-success text-upppercase" disabled>UPDATE</button> </td>
+						<?php 		if ($row['faq']) {?>
+											<td> <button type="button" name="button" class= "btn btn-sm btn-danger text-center text-upppercase" disabled>faq</button> </td>
+											<td><a href="qupdate2.php?PKid=<?php echo $row['id']; ?>&flag=disable"  class= "btn btn-sm btn-danger text-center text-upppercase">Disable</a></td>
+									  <?php 	} else { ?>
+											<td><a href="qupdate2.php?PKid=<?php echo $row['id']; ?>&flag=enable"  class= "btn btn-sm btn-danger text-center text-upppercase">FAQ</a></td>
+											<td> <button type="button" name="button" class= "btn btn-sm btn-danger text-center text-upppercase" disabled>Disable</button> </td>
+									  <?php }
+									} ?>
+
+
+							</form>
 						</tr>
-						</tr>
+					<?php } ?>
 					</tbody>
 				</table>
 

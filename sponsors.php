@@ -1,6 +1,6 @@
 
 <?php
-//include("sessions.php");
+include("sessions.php");
 include("connect.php");
 
     function GetImageExtension($imagetype)

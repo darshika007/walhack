@@ -2,7 +2,7 @@
   //start session
   session_start();
   //if the userlogin is not true
-  if($_SESSION['adlogin']!= TRUE)
+  if(!isset($_SESSION['adlogin']))
   {
     //alert the error
     echo "<script type='text/javascript'>";

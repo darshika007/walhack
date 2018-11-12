@@ -1,3 +1,9 @@
+
+<?php
+include("sessions.php");
+include("connect.php");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,30 +101,70 @@
 	     				<thead class="font-weight-bold text-center">
 	      					<tr>
 	        				<th>ID</th>
-	        				<th>Name</th>
-	        				<th>Contact No</th>
-	        				<th>Email id</th>
-	        				<th>Age</th>
-	        				<th>Gender</th>
-	        				<th>Date</th>
-	        				<th>Address</th>
-									<th>EDIT</th>
-									<th>DELETE</th>
+	        				<th>Team Name</th>
+	        				<th>Description</th>
+	        				<th>Member 1 Name</th>
+	        				<th>Member 1 Email</th>
+	        				<th>Member 1 Contact</th>
+	        				<th>Member 2 Name</th>
+	        				<th>Member 2 Email</th>
+									<th>Member 2 Contact</th>
+									<th>Member 3 Name</th>
+									<th>Member 3 Email</th>
+									<th>Member 3 Contact</th>
+									<th>Member 4 Name</th>
+									<th>Member 4 Email</th>
+									<th>Member 4 Contact</th>
+									<th>Date of Registration</th>
+
 	      					</tr>
 	    				</thead>
+							<?php
+							$query = $con->query('SELECT * FROM rsvp');
+
+							if($query->num_rows > 0){
+									while($row = $query->fetch_assoc()){
+									$team_name=$row['team_name'];
+									$describes=$row['describes'];
+									$m1_name=$row['m1_name'];
+									$m1_email=$row['m1_email'];
+									$m1_contact=$row['m1_contact'];
+									$m2_name=$row['m2_name'];
+									$m2_email=$row['m2_email'];
+									$m2_contact=$row['m2_contact'];
+									$m3_name=$row['m3_name'];
+									$m3_email=$row['m3_email'];
+									$m3_contact=$row['m3_contact'];
+									$m4_name=$row['m4_name'];
+									$m4_email=$row['m4_email'];
+									$m4_contact=$row['m4_contact'];
+									$datime=$row['datime'];
+							?>
 	    				<tbody>
 	      					<tr>
-	        				<td>1</td>
-	        				<td>Sahil</td>
-	        				<td>7756022308</td>
-	        				<td>abc@gmail.com</td>
-	        				<td>22</td>
-	        				<td>Male</td>
-	        				<td>5th November</td>
-	        				<td>Bangalore</td>
-									<td><a href="#" class="btn btn-success btn-sm font-weight-bold text-uppercase">Edit</a></td>
-									<td><a href="#" class="btn btn-danger btn-sm font-weight-bold text-uppercase">Delete</a></td>
+	        				<td><ol><li></li></ol></td>
+	        				<td><?php echo $row['team_name']; ?></td>
+	        				<td><?php echo $row['describes']; ?></td>
+	        				<td><?php echo $row['m1_name']; ?></td>
+	        				<td><?php echo $row['m1_email']; ?></td>
+	        				<td><?php echo $row['m1_contact']; ?></td>
+	        				<td><?php echo $row['m2_name']; ?></td>
+	        				<td><?php echo $row['m2_email']; ?></td>
+									<td><?php echo $row['m2_contact']; ?></td>
+									<td><?php echo $row['m3_name']; ?></td>
+									<td><?php echo $row['m3_email']; ?></td>
+									<td><?php echo $row['m3_contact']; ?></td>
+									<td><?php echo $row['m4_name']; ?></td>
+									<td><?php echo $row['m4_email']; ?></td>
+									<td><?php echo $row['m4_contact']; ?></td>
+									<td><?php echo $row['datime']; ?></td>
+
 	      					</tr>
+								<?php }}
+
+								else{ ?>
+									<center>  <h1>NO Applicants YET!</h1></center>
+								<?php } ?>
 	    				</tbody>
 	  				</table>
 	  			</div>

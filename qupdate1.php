@@ -3,9 +3,13 @@ $var1=$_POST['PKid'];
 $var2=$_POST['textarea'];
 $email=$_POST['email'];
 
+//echo $var1;
+//echo $var2;
+//echo $email;
+
 include('connect.php');
-$query="update query set ans='".$var2."', ansby='ADMIN' where id=".$var1;
-mysqli_query($db,$query) or die(mysqli_error($select_db));
+$query="UPDATE query set ans='".$var2."' where id=".$var1;
+mysqli_query($con,$query) or die(mysqli_error($con));
 
 if ($result) {
   $to = $email;
