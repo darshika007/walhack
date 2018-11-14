@@ -26,7 +26,7 @@ include("connect.php");
          $desig = mysqli_real_escape_string($con, $_POST['desig']);
          $comp = mysqli_real_escape_string($con, $_POST['comp']);
          $radio = mysqli_real_escape_string($con, $_POST['radio']);
-        
+
       $sql = "INSERT into mentors (name, desig, comp,pos,imgpath) VALUES ('$name','$desig','$comp','$radio','$fileimg')";
        mysqli_query($con, $sql);
        if (move_uploaded_file($_FILES['imgpath']['tmp_name'],$target)) {
@@ -134,7 +134,7 @@ include("connect.php");
 					</li>
 					<li class="list-item"><a href="agenda.php" class="text-uppercase font-weight-bold"><spam><i class="fas fa-edit"></i>&nbsp;</span>Agenda</a>
 					</li>
-					<li class="list-item active"><a href="judges.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-layer-group"></i>&nbsp;</span>Judges</a>
+					<li class="list-item"><a href="judges.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-layer-group"></i>&nbsp;</span>Judges</a>
 					</li>
 					<li class="list-item"><a href="prizes.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-award"></i>&nbsp;</span>Prizes</a>
 					</li>
@@ -146,7 +146,7 @@ include("connect.php");
 					</li>
 					<li class="list-item"><a href="problem.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span> Problem Statement</a>
 					</li>
-          <li class="list-item"><a href="mentors.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span>Mentors and Speakers</a>
+          <li class="list-item active"><a href="mentors.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-code"></i>&nbsp;</span>Mentors and Speakers</a>
           </li>
           <li class="list-item"><a href="logout.php" class="text-uppercase font-weight-bold"><span><i class="fas fa-sign-out-alt"></i>&nbsp;</span> Logout</a>
 					</li>
@@ -226,7 +226,7 @@ include("connect.php");
             <td><?php echo "$desig";  ?></td>
             <td><?php echo"$comp";?></td>
 						<td class="text-justify"><?php echo "$radio";?></td>
-            <td><?php echo"$imageURL";?></td>
+            <td> <img src=" <?php echo $imageURL; ?> " style="height:150px" alt="Speakers"> </td>
             <td><a href="edit_men.php?id= <?php echo $row["id"];  ?> " class= "btn btn-sm text-center btn-success text-upppercase">Edit</a></td>
             <td><a href="del_men.php?id=<?php echo $row["id"];  ?>" class= "btn btn-sm btn-danger text-center text-upppercase">Delete</a></td>
 						</tr>

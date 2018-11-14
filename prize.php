@@ -183,7 +183,7 @@ include("connect.php");
 					<tbody>
 						<tr>
             <td><ol><li></li></ol></td>
-						<td><?php echo"$imageURL";?></td>
+						<td> <img src=" <?php echo $imageURL; ?> " style="height:150px" alt="Posters"> </td>
 						<td class="text-justify"><?php echo"$descrip";?></td>
             <td><a href="edit_prize.php?id= <?php echo $row["id"];  ?> " class= "btn btn-sm text-center btn-success text-upppercase"><b>Edit</a></td>
             <td><a href="del_prize.php?id=<?php echo $row["id"];  ?>" class= "btn btn-sm btn-danger text-center text-upppercase"><b>Delete</a></td>

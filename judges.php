@@ -198,7 +198,7 @@ include("connect.php");
           ?>
 					<tbody>
 						<tr>
-            <td class="text-justify"><?php echo "$imageURL";  ?> </td>
+            <td> <img src=" <?php echo $imageURL; ?> " style="height:150px" alt="Judges"> </td>
 						<td><?php echo "$name";  ?></td>
 						<td><?php echo "$desig";  ?></td>
 						<td><?php echo "$comp";  ?></td>

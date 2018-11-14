@@ -481,7 +481,7 @@ if ($result) {
             						<div class="input-group-prepend">
       								<span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
     								</div>
-    								<input type="tel" class="form-control" name="m1_contact"placeholder="Contact Number" aria-label="Email" aria-describedby="basic-addon1">
+    								<input type="tel" pattern="[789][0-9]{9}" class="form-control" name="m1_contact"placeholder="Contact Number" aria-label="Email" aria-describedby="basic-addon1">
   							</div>
 
                 				<p class="font-weight-bold black-text text-left">Member 2</p>
@@ -505,7 +505,7 @@ if ($result) {
             						<div class="input-group-prepend">
       								<span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
     								</div>
-    								<input type="tel" class="form-control" name="m2_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
+    								<input type="tel" pattern="[789][0-9]{9}" class="form-control" name="m2_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
   							</div>
 
                 				<p class="font-weight-bold black-text text-left">Member 3</p>
@@ -529,7 +529,7 @@ if ($result) {
             						<div class="input-group-prepend">
       								<span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
     								</div>
-    								<input type="tel" class="form-control" name="m3_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
+    								<input type="tel" pattern="[789][0-9]{9}" class="form-control" name="m3_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
   							</div>
 
                 				<p class="font-weight-bold black-text text-left">Member 4</p>
@@ -539,7 +539,7 @@ if ($result) {
             						<div class="input-group-prepend">
       								<span class="input-group-text" id="basic-addon1"><i class="fas fa-male"></i></span>
     								</div>
-    								<input type="tel" class="form-control" name="m4_name"placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+    								<input type="text"  class="form-control" name="m4_name"placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
   							</div>
 
                 				<div class="input-group mb-3">
@@ -553,7 +553,7 @@ if ($result) {
             						<div class="input-group-prepend">
       								<span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-square"></i></span>
     								</div>
-    								<input type="tel" class="form-control" name="m4_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
+    								<input type="tel" pattern="[789][0-9]{9}" class="form-control" name="m4_contact" placeholder="Contact Number" aria-label="Contact Number" aria-describedby="basic-addon1">
   							</div>
 
               		</div>
@@ -666,13 +666,15 @@ if ($result) {
 	<!-- Start of Section Number Three: Agenda --->
 	<div id="agenda">
 	<section class="container-fluid agenda">
-
+    <h1 class="font-weight-bold text-white text-center pt-5">AGENDA OF THE EVENT</h1>
+    <div class="line" style="height:200px; width:100%; background-color:white;"></div>
 		<div class="row">
 
-			<div class="col-sm-12"  style="transform: translateY(-500px); ">
+			<div class="col-sm-12"  style="transform: translateY(-550px); ">
 				<div class="timeline">
   					<div class="timeline__wrap">
     					<div class="timeline__items">
+
                 <?php
                 $query = $con->query('SELECT * FROM agenda');
               if($query->num_rows > 0){
@@ -690,31 +692,33 @@ if ($result) {
       								<p class="text-justify"><?php echo $descrip; ?></p>
         						</div>
       						</div><?php }} ?>
-      						<div class="timeline__item">
-        						<div class="timeline__content">
-          							<h2 class="font-weight-bold black-text"><span><i class="fas fa-clock"></i></span>&nbsp;8:30 AM</h2>
-          							<h5 class="font-weight-bold">Teams Registration, Breakfast & Setup Troubleshooting&nbsp;<span class="text-muted small">8:30-9:30 AM</span></h5>
-          							<p class="text-justify">In this 1 hour, the participants will first have to register themselves, have their breakfast and get a place alloted.</p>
-        						</div>
-      						</div>
-      						<div class="timeline__item">
-      							<div class="timeline__content">
-      								<h2 class="font-weight-bold black-text"><span><i class="fas fa-clock"></i></span>&nbsp;9:30 AM</h2>
-          							<h5 class="font-weight-bold">Guidelines,Rules,Judgement Criteria&nbsp;<span class="text-muted small">9:30-10:00 AM</span></h5>
-          							<p class="text-justify">After registration & breakfast, the participants will be given a brief description about the rules, deadlines and the winning criteria.</p>
-      							</div>
-      						</div>
-
-
-
-
-
-
     					</div>
   					</div>
 				</div>
 			</div>
+
 		</div>
+
+    <h2 class="text-uppercase text-white text-center black py-4">Photos of the event</h2>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <img src="img/hack1.jpg" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="img/hack2.jpeg" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="img/hack3.jpg" class="img-responsive">
+          </div>
+          <div class="item">
+            <img src="img/hack4.jpg" class="img-responsive">
+          </div>
+        </div>
+    </div>
+    </div>
+    <div class="line" style="height:200px; width:100%; background-color:white; transform: transalateY(-1000px);"></div>
 	</section>
 	</div>
 	<!-- End of Section Number Three: Agenda --->

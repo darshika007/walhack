@@ -219,7 +219,7 @@ include("connect.php");
 						<td><?php echo"$name"; ?></td>
             <td><?php echo"$contact";?></td>
 						<td class="text-justify"><?php echo "$email";?></td>
-            <td><?php echo"$imageURL";?></td>
+            <td> <img src=" <?php echo $imageURL; ?> " style="height:150px" alt="Sponsers"> </td>
             <td><a href="edit_spon.php?id= <?php echo $row["id"];  ?> " class= "btn btn-sm text-center btn-success text-upppercase">Edit</a></td>
             <td><a href="del_spon.php?id=<?php echo $row["id"];  ?>" class= "btn btn-sm btn-danger text-center text-upppercase">Delete</a></td>
 						</tr>
